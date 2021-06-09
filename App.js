@@ -1,12 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
+import LandingPage from './components/LandingPage';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+
+  const initialState = {
+    user: false,
+    mode: 'landingPage'
+  }
+
+  const [state, setState] = useState(initialState);
+
   return (
     <View style={styles.container}>
-      <Text>Hello world!</Text>
-      <StatusBar style="auto" />
+      {state.mode === "landingPage" &&  <LandingPage
+        signIn={() => setState({ ...state, mode: "signIn" })}
+        signUp={() => setState({ ...state, mode: "signUp" })}
+      />}
+      {state.mode === "signIn" &&  <SignIn
+        backHome={() => setState({ ...state, mode: "landingPage" })}
+      />}
+      {state.mode === "signUp" &&  <SignUp
+        backHome={() => setState({ ...state, mode: "landingPage" })}
+       />}
     </View>
   );
 }
@@ -14,8 +33,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
+    alignItems: 'center'
+  }
 });
