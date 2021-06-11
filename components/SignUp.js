@@ -8,6 +8,27 @@ export default function SignIn(props) {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
 
+  const save = function() {
+    fetch('https://eub3hnvq36.execute-api.us-west-2.amazonaws.com/prod/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        "firstName": firstName,
+        "lastName": lastName,
+        "email": email,
+        "password": password
+      })
+    })
+    .then(response => response.json())
+    .then((response) => {
+      console.log(response.statusCode);
+      if (response.statusCode === 407) {
+        Alert.alert("Error", "Email already in use.")
+      } else {
+        props.backHome();
+      }
+    })
+  }
+
   const validate = function() {
 
     if (email === "" || password === "") {
@@ -15,7 +36,7 @@ export default function SignIn(props) {
       return;
     }
 
-    // save()
+    save()
   }
 
   return (

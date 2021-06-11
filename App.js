@@ -19,9 +19,11 @@ export default function App() {
       {state.mode === "landingPage" &&  <LandingPage
         signIn={() => setState({ ...state, mode: "signIn" })}
         signUp={() => setState({ ...state, mode: "signUp" })}
+        user={state.user}
       />}
       {state.mode === "signIn" &&  <SignIn
         backHome={() => setState({ ...state, mode: "landingPage" })}
+        setUser={(user) => setState({...state, mode: "landingPage", user: user})}
       />}
       {state.mode === "signUp" &&  <SignUp
         backHome={() => setState({ ...state, mode: "landingPage" })}
@@ -32,8 +34,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    paddingTop: 70
   }
 });
