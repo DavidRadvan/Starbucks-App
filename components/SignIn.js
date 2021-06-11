@@ -46,11 +46,13 @@ export default function SignIn(props) {
         value={email}
         onChangeText={onChangeEmail}
         placeholder="Email"
+        placeholderTextColor="#6a6e75"
       />
       <TextInput
         value={password}
         onChangeText={onChangePassword}
         placeholder="Password"
+        placeholderTextColor="#6a6e75"
       />
       <Button
         title="Submit"
