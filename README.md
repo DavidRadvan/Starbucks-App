@@ -6,6 +6,6 @@ App made through React-Native for a job interview. Android app that mimics the S
 
 ### Screenshots
 
-!["Landing Page"]()
-!["Sign Up Page"]()
-!["Sign In Page"]()
+!["Landing Page"](https://github.com/DavidRadvan/Starbucks-App/blob/main/screenshots/landingpage.jpg?raw=true)
+!["Sign Up Page"](https://github.com/DavidRadvan/Starbucks-App/blob/main/screenshots/signup.jpg?raw=true)
+!["Sign In Page"](https://github.com/DavidRadvan/Starbucks-App/blob/main/screenshots/signin.jpg?raw=true)
