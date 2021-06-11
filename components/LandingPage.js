@@ -223,6 +223,7 @@ const styles = StyleSheet.create({
     width: 45
   },
   footerText: {
+    textAlign: 'center'
   },
   footerButton: {
   }
