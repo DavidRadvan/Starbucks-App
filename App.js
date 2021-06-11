@@ -19,6 +19,7 @@ export default function App() {
       {state.mode === "landingPage" &&  <LandingPage
         signIn={() => setState({ ...state, mode: "signIn" })}
         signUp={() => setState({ ...state, mode: "signUp" })}
+        logout={() => setState({ ...state, user: false })}
         user={state.user}
       />}
       {state.mode === "signIn" &&  <SignIn

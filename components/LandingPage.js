@@ -1,29 +1,46 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function LandingPage(props) {
   return (
     <View style={styles.landingPageContainer}>
       {!props.user && <Text style={styles.title}> It's a great day for coffee ☕️ </Text>}
       {props.user && <Text style={styles.title}> Hello there, {props.user.firstName} </Text>}
+
       <View elevation={0} style={[styles.navbar, styles.navbarShadow]}>
-        <TouchableOpacity onPress={props.signIn} style={styles.navbar}>
+
+        {!props.user && <TouchableOpacity onPress={props.signIn} style={styles.navbar}>
           <Image style={styles.profileIcon} source={require("../lib/icons/profile.png")} />
           <Text style={styles.navText}> Sign in </Text>
-        </TouchableOpacity>
+        </TouchableOpacity>}
+
+        {props.user && <TouchableOpacity onPress={props.logout} style={styles.navbar}>
+          <Image style={styles.profileIcon} source={require("../lib/icons/profile.png")} />
+          <Text style={styles.navText}> Sign out </Text>
+        </TouchableOpacity>}
+
         <View style={styles.navbar}>
           <Image style={styles.mailIcon} source={require("../lib/icons/mail.png")} />
           <Text style={styles.navText}> Inbox </Text>
         </View>
+
         <View style={styles.rightAlign}>
           <Image style={styles.gearIcon} source={require("../lib/icons/gear.png")} />
         </View>
+
       </View>
+
       <Text style={styles.rewardsText}> Starbucks® Rewards </Text>
-        <Button
-          title="Sign-In"
-          onPress={props.signIn}
-        />
+
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+
+        <Image source={require("../lib/images/Starbucks-Rewards-3.jpg")} style={styles.scrollImages} />
+        <Image source={require("../lib/images/Starbucks-Rewards-2.jpg")} style={styles.scrollImages} />
+        <Image source={require("../lib/images/Starbucks-Rewards-1.jpg")} style={[styles.scrollImages, {width: 350} ]} />
+
+      </ScrollView>
+      <Text style={styles.callToAction}>Join Starbucks Rewards to get more of what you love</Text>
+      <Button title="Sign-Up" onPress={props.signUp } />
         <Button
           title="Sign-Up"
           onPress={props.signUp}
@@ -64,8 +81,9 @@ const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     paddingTop: "5%",
-    paddingLeft: "3%",
-    paddingBottom: "3%"
+    paddingLeft: "1%",
+    paddingBottom: "3%",
+    paddingRight: "3%"
   },
   navbarShadow: {
     paddingBottom: "1%",
@@ -86,6 +104,21 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end"
   },
   rewardsText: {
-    
+    color: "#6a6e75",
+    fontWeight: "800",
+    marginTop: "5%",
+    marginLeft: "5%",
+    opacity: 0.8
+  },
+  scrollImages: {
+    height: 200,
+    width: 300,
+    margin: 20
+  },
+  callToAction: {
+    color: "#1f1f1f",
+    fontSize: 25,
+    fontWeight: "400",
+    paddingLeft: "5%"
   }
 });
