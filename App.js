@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import LandingPage from './components/LandingPage';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function App() {
 
@@ -35,6 +35,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 70
+    paddingTop: 70,
+    flex: 1
   }
 });
