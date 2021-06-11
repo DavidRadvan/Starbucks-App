@@ -24,7 +24,6 @@ export default function SignIn(props) {
     })
     .then(response => response.json())
     .then((response) => {
-      console.log(response.statusCode);
       if (response.statusCode === 407) {
         Alert.alert("Error", "Email already in use.")
       } else {
